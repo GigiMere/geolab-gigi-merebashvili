@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">Welcome to GTT Store</h1>
+
+<form method="GET" class="mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <select class="form-select" name="category">
+                <option value="">All Categories</option>
+                <option value="PCs">PCs</option>
+                <option value="Motherboards">Motherboards</option>
+                <option value="CPUs">CPUs</option>
+                <option value="GPUs">GPUs</option>
+                <option value="Computer accessories">Computer accessories</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <input type="number" class="form-control" name="min_price" placeholder="Min Price">
+        </div>
+        <div class="col-md-4">
+            <input type="number" class="form-control" name="max_price" placeholder="Max Price">
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+</form>
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <img src="{{ url_for('static', filename=product.image) if product.image else url_for('static', filename='images/placeholder.jpg') }}"
+                 class="card-img-top" alt="{{ product.name }}">
+            <div class="card-body" style="background-color:orange;">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text text-success">Price: ${{ product.price }}</p>
+                <p class="card-text text-muted">Category: {{ product.category }}</p>
+                <a href="{{ url_for('product', product_id=product.id) }}" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

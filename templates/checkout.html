@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">Checkout</h1>
+<form method="POST" class="w-50 mx-auto">
+    <div class="mb-3">
+        <label for="full_name" class="form-label">Full Name</label>
+        <input type="text" name="full_name" id="full_name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" name="address" id="address" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="card_number" class="form-label">Card Number</label>
+        <input type="text" name="card_number" id="card_number" class="form-control" required>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="expiration_date" class="form-label">Expiration Date</label>
+            <input type="text" name="expiration_date" id="expiration_date" class="form-control" placeholder="MM/YY" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="cvv" class="form-label">CVV</label>
+            <input type="text" name="cvv" id="cvv" class="form-control" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Submit Payment</button>
+</form>
+{% endblock %}
